@@ -1,9 +1,9 @@
-//your code here!
-const list = document.getElementById('infinite-list');
+const list = document.getElementById('infi-list');
 
-// Helper to create and append list items
 let itemCount = 0;
-function addListItems(count) {
+
+// Function to add items
+function addItems(count) {
   for (let i = 0; i < count; i++) {
     const li = document.createElement('li');
     itemCount++;
@@ -13,13 +13,13 @@ function addListItems(count) {
 }
 
 // Initial 10 items
-addListItems(10);
+addItems(10);
 
-// Scroll event to trigger infinite loading
-list.addEventListener('scroll', function () {
-  // Check if we've scrolled to the bottom
-  if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
-    addListItems(2); // Add 2 more items
+// Infinite scroll detection
+window.addEventListener('scroll', () => {
+  // Check if scrolled to bottom
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    addItems(2);
   }
 });
 
